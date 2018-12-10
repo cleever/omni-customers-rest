@@ -1,0 +1,24 @@
+<mat-list>
+  <mat-list-item *ngFor="let customer of customers; let idx = index"
+                 (click)="select(customer)">
+    <img matListAvatar
+         [src]="customer.picture | picture">
+    <p matLine>
+      <span> {{customer.name}} </span>
+    </p>
+    <p matLine>
+      <span> {{customer.email}} </span>
+    </p>
+  </mat-list-item>
+  <mat-list-item>
+    <button fxFill
+            mat-raised-button
+            color="accent"
+            *ngIf="loaded && hasMore()"
+            (click)="loadMore()">Carregar Mais</button>
+    <mat-progress-spinner [mode]="'indeterminate'"
+                          [diameter]="20"
+                          *ngIf="!loaded">
+    </mat-progress-spinner>
+  </mat-list-item>
+</mat-list>

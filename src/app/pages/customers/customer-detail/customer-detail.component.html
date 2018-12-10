@@ -1,0 +1,48 @@
+<div>
+  <div fxLayout="column"
+       *ngIf="!customer">
+    <h3>Por favor, selecione um cliente no painel lateral</h3>
+  </div>
+  <div fxLayout="column"
+       *ngIf="customer">
+    <mat-card fxFlex>
+      <mat-card-content fxLayoutAlign="start center"
+                        fxLayout="row"
+                        fxLayout.xs="column">
+        <div fxFlex class="picture-box">
+          <img [src]="customer.picture | picture">
+        </div>
+        <div fxFlex class="customer-info">
+          <mat-card-title>{{customer.name}} {{customer.lastName}}</mat-card-title>
+          <mat-card-subtitle>{{customer.email || 'e-mail não informado'}}</mat-card-subtitle>
+          <mat-card-subtitle>{{customer.phone || 'telefone não informado'}}</mat-card-subtitle>
+        </div>
+        <div fxFlex></div>
+      </mat-card-content>
+
+    </mat-card>
+
+    <mat-card fxFlex>
+      <mat-card-header>
+        <mat-card-title>Dados Adicionais</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Nascimento: {{(customer.birthDate | date: 'dd/MM/yyyy') || 'não informado'}}</p>
+        <p>Documento: {{(customer.taxDocumentNumber | document) || 'documento não informado'}}</p>
+
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex>
+      <mat-card-header>
+        <mat-card-title>Endereço</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{customer.address.addressLine1}}{{customer.address.number | separator}}{{customer.address.suburb|separator}}</p>
+        <p>{{customer.address.addressLine2}}</p>
+        <p>{{customer.address.city}}{{customer.address.state | separator:'-'}}{{customer.address.country | separator}}</p>
+        <p>{{customer.address.zip}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div [class.loader-hidden]="!show"
+     [ngSwitch]="kind">
+  <div class="loader-overlay"
+       *ngSwitchCase="'bar'">
+    <div>
+      <mat-progress-bar mode="indeterminate"
+                        *ngIf="show"></mat-progress-bar>
+    </div>
+  </div>
+  <div *ngSwitchCase="'spinner'">
+    <mat-progress-spinner [mode]="'indeterminate'"
+                          [diameter]="20"
+                          *ngIf="show">
+    </mat-progress-spinner>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+@include mat-core();
+// Palletas principais
+$primary: $mat-gray;
+$accent: $mat-amber;
+// Definição de tema
+$default-primary: mat-palette($primary);
+$default-accent: mat-palette($accent, A200, A100, A400);
+$default-theme: mat-light-theme($default-primary, $default-accent);
+// Inclusão do tema
+@include angular-material-theme($default-theme);
+// Define um tema alternativo escuro
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-warn: mat-palette($mat-deep-orange);
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+.default-dark-theme {
+  @include angular-material-theme($dark-theme);
+}
+
+@mixin default-theme() {
+  $primary: mat-palette($primary);
+  $accent: mat-palette($accent, A200, A100, A400);
+}

@@ -1,0 +1,34 @@
+<app-loader [kind]="'bar'"></app-loader>
+<mat-toolbar color="primary"
+             class="mat-elevation-z6">
+  <mat-toolbar-row>
+    <img class="logo"
+         src="assets/omnichat_logo.png">
+    <span class="flex-spacer"></span>
+    <a mat-button
+       *ngIf="!(isHandset$ | async)"
+       routerLink="/pages/customers"
+       aria-label="Clientes">
+      <span>Clientes</span>
+    </a>
+    <a mat-button
+       *ngIf="!(isHandset$ | async)"
+       routerLink="/pages/products"
+       aria-label="Produtos">
+      <span>Produtos</span>
+    </a>
+    <button mat-icon-button
+            *ngIf="isHandset$ | async"
+            [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<div class="outlet-container">
+  <router-outlet></router-outlet>
+</div>
+<mat-menu #appMenu="matMenu">
+  <a mat-menu-item routerLink="/pages/customers">Clientes</a>
+  <a mat-menu-item routerLink="/pages/products">Produtos</a>
+</mat-menu>
