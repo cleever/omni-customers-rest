@@ -23,7 +23,7 @@ export class DataService extends BaseService {
     const url = `${this.apiUrl}/${route}${queryParameters}`;
     return this.http.get<T>(url)
       .pipe(
-        retry(0),
+        retry(3),
         catchError(this.handleError)
       );
   }
@@ -32,7 +32,7 @@ export class DataService extends BaseService {
     const url = `${this.apiUrl}/${route}/${objectId}`;
     return this.http.get<T>(url)
       .pipe(
-        retry(0),
+        retry(3),
         catchError(this.handleError)
       );
   }
